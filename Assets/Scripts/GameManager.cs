@@ -10,11 +10,15 @@ public class GameManager : MonoBehaviour
     private Vector3 mouseStartPos, PlayerStartPos;
     [SerializeField] public float leftRightSpeed, RoadSpeed;
     [SerializeField] GameObject Road;
+    [SerializeField] float Distance;
     static GameManager GameManagerInstance;
     Camera mainCam;
-    [SerializeField] float Distance;
-    public List<Transform> Foods = new List<Transform>();
     
+    public List<Transform> Foods = new List<Transform>();
+
+    private void OnCollisionEnter(Collision other) {
+       Debug.Log("Triggered"); 
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
 
                 if (DesireDistance <= Distance)
                 {
-                    SecFood.position = new Vector3(Mathf.Lerp(SecFood.position.x, FirstFood.position.x, leftRightSpeed * Time.deltaTime), SecFood.position.y, Mathf.Lerp(SecFood.position.z, FirstFood.position.z + 0.5f, leftRightSpeed * Time.deltaTime));
+                    SecFood.position = new Vector3(Mathf.Lerp(SecFood.position.x, FirstFood.position.x, leftRightSpeed * Time.deltaTime), SecFood.position.y, Mathf.Lerp(SecFood.position.z, FirstFood.position.z + 1.5f, leftRightSpeed * Time.deltaTime));
                 }
             } 
         }
@@ -100,13 +104,15 @@ public class GameManager : MonoBehaviour
         if (other.tag == "Collect")
         {
             Debug.Log("Triggered");
-            //other.transform.parent = null;
-            //other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
-            //other.gameObject.GetComponent<Collider>().isTrigger = true;
-            //other.tag = gameObject.tag;
-            //Foods.Add(other.transform);
+            other.transform.parent = null;
+            other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+            other.gameObject.GetComponent<Collider>().isTrigger = true;
+            other.tag = gameObject.tag;
+            Foods.Add(other.transform);
         }   
     }
+
+    
 
 }
 

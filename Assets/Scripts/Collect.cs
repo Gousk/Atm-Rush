@@ -7,7 +7,6 @@ public class Collect : MonoBehaviour
 {
     public List<GameObject> cubes;
     int numCol = 0;
-    int multiplier = 3;
     bool go = false;
     Collider otherD;
     private void OnTriggerEnter(Collider other) 
