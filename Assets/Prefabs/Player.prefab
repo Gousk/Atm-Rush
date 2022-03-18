@@ -1878,11 +1878,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8215634318594270543}
   - component: {fileID: 8215634317783908889}
-  - component: {fileID: 8215634317783908887}
-  - component: {fileID: 704817886180515427}
+  - component: {fileID: 2525736823610621285}
+  - component: {fileID: 41531714}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1923,7 +1923,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8215634317783908887
+--- !u!114 &2525736823610621285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1932,23 +1932,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8215634318594570607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea774b90c7cb02a4dabd9a2e901b5735, type: 3}
+  m_Script: {fileID: 11500000, guid: 30398cf41895c844dad953820ebb71cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 15
-  horizontalSpeed: 20
---- !u!114 &704817886180515427
-MonoBehaviour:
+  MoveByTouch: 0
+  StartTheGame: 0
+  leftRightSpeed: 0
+  RoadSpeed: 0
+  Road: {fileID: 0}
+  Distance: 0
+  Foods: []
+--- !u!65 &41531714
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8215634318594570607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7746c44a895aa6d4e8b693951cda1ef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 2.4819715, y: 3.0570004, z: 1}
+  m_Center: {x: 0.021785617, y: 2.2065227, z: 0}
 --- !u!1 &8215634318594570609
 GameObject:
   m_ObjectHideFlags: 0
