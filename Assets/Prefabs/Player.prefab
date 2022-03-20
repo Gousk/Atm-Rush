@@ -1878,7 +1878,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8215634318594270543}
   - component: {fileID: 8215634317783908889}
-  - component: {fileID: 2525736823610621285}
+  - component: {fileID: 4963263222684096433}
+  - component: {fileID: 3996321975337177944}
   - component: {fileID: 41531714}
   m_Layer: 0
   m_Name: Player
@@ -1923,7 +1924,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2525736823610621285
+--- !u!114 &4963263222684096433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1932,7 +1933,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8215634318594570607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30398cf41895c844dad953820ebb71cf, type: 3}
+  m_Script: {fileID: 11500000, guid: ea774b90c7cb02a4dabd9a2e901b5735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveByTouch: 0
@@ -1940,6 +1941,18 @@ MonoBehaviour:
   leftRightSpeed: 0
   RoadSpeed: 0
   Road: {fileID: 0}
+--- !u!114 &3996321975337177944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215634318594570607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9e53fe2bf471b42afa4c8325822315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Distance: 0
   Foods: []
 --- !u!65 &41531714

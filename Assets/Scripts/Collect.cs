@@ -1,37 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Collect : MonoBehaviour
 {
-    public List<GameObject> cubes;
-    int numCol = 0;
-    bool go = false;
-    Collider otherD;
-    private void OnTriggerEnter(Collider other) 
+    GameObject playerObject;
+    Vector3 firstScale;
+    float goalScale = 1.25f;
+    private void Start() 
     {
-        go = true; 
-        otherD = other; 
-        numCol = numCol + 1;
-        Debug.Log(numCol);
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        firstScale = transform.localScale;
+        
     }
 
-    void Update()
+    void OnTriggerEnter(Collider other) 
     {
-        if (go == true)
+        if (other.CompareTag("Collect"))
         {
-            Collecting(otherD);
-        }    
-    }
-
-    void Collecting(Collider otherAc)
-    {
-        Debug.Log("triggered");
-        if (otherAc.gameObject.CompareTag("Collect"))
-        {
-            otherAc.gameObject.transform.position = transform.position + (Vector3.forward*3 + Vector3.up); 
-                 
+            other.transform.parent = null;
+            other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+            other.gameObject.GetComponent<Collider>().isTrigger = true;
+            other.gameObject.AddComponent<Collect>();
+            other.tag = gameObject.tag;
+            playerObject.GetComponent<Collection>().Foods.Add(other.transform);
         }
     }
 }
+

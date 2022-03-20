@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
                 Vector3 desirePso = mousePos - mouseStartPos;
                 Vector3 move = PlayerStartPos + desirePso;
 
-                move.x = Mathf.Clamp(move.x, -10f, 10f);
+                move.x = Mathf.Clamp(move.x, -5f, 5f);
                 move.z = -7f;
 
                 var player = transform.position;
@@ -71,17 +71,4 @@ public class Movement : MonoBehaviour
             mainCam.transform.position = new Vector3(Mathf.Lerp(mainCam.transform.position.x, transform.position.x, (leftRightSpeed - 5f) * Time.deltaTime), mainCam.transform.position.y, mainCam.transform.position.z);
         }    
     }
-
-    private void OnTriggerEnter(Collider other) 
-    {
-        if (other.CompareTag("Collect"))
-        {
-            other.transform.parent = null;
-            other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
-            other.gameObject.GetComponent<Collider>().isTrigger = true;
-            other.tag = gameObject.tag;
-            collectionScript.Foods.Add(other.transform);
-        }   
-    }
-
 }
