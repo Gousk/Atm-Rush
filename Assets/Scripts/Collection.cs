@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 public class Collection : MonoBehaviour
 {
@@ -38,12 +39,30 @@ public class Collection : MonoBehaviour
     {
         if (other.CompareTag("Collect"))
         {
-            other.transform.parent = null;
-            other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
-            other.gameObject.GetComponent<Collider>().isTrigger = true;
-            other.gameObject.AddComponent<Collect>();
-            other.tag = gameObject.tag;
-            Foods.Add(other.transform);                   
+            if (!Foods.Contains(other.gameObject.transform))
+            {
+                other.transform.parent = null;
+                other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                other.gameObject.GetComponent<Collider>().isTrigger = true;
+                other.gameObject.AddComponent<Collect>();
+                other.tag = "Collected";
+                Foods.Add(other.transform); 
+                StartCoroutine(MakeObjectsBigger());
+            }
+                          
         }   
+    }
+
+    public IEnumerator MakeObjectsBigger()
+    {
+        for (int i = Foods.Count-1; i > 0; i--)
+        {
+            Vector3 firstScale = Foods[i].transform.localScale;
+            Vector3 Scale = firstScale * 2f;
+
+            Foods[i].transform.DOScale(Scale, 0.1f).OnComplete(() => 
+            Foods[i].transform.DOScale(firstScale, 0.1f));
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
