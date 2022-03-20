@@ -43,7 +43,7 @@ public class Collection : MonoBehaviour
             {
                 other.transform.parent = null;
                 other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
-                other.gameObject.GetComponent<Collider>().isTrigger = true;
+                other.gameObject.GetComponent<Collider>().isTrigger = false;
                 other.gameObject.AddComponent<Collect>();
                 other.tag = "Collected";
                 Foods.Add(other.transform); 
