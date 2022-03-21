@@ -43,7 +43,7 @@ public class Converter : MonoBehaviour
     void MakeObjectsBigger()
     {
             Vector3 firstScale = transform.localScale;
-            Vector3 Scale = firstScale * 2f;
+            Vector3 Scale = firstScale * 1.5f;
 
             transform.DOScale(Scale, 0.1f).OnComplete(() => 
              transform.DOScale(firstScale, 0.1f));

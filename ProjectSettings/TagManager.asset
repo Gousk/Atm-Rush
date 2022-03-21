@@ -10,6 +10,7 @@ TagManager:
   - Upgrade2
   - Upgrade3
   - Converter
+  - Fridge
   layers:
   - Default
   - TransparentFX

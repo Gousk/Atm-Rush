@@ -59,7 +59,7 @@ public class Collection : MonoBehaviour
         for (int i = Foods.Count-1; i > 0; i--)
         {
             Vector3 firstScale = Foods[i].transform.localScale;
-            Vector3 Scale = firstScale * 2f;
+            Vector3 Scale = firstScale * 1.5f;
 
             Foods[i].transform.DOScale(Scale, 0.1f).OnComplete(() => 
             Foods[i].transform.DOScale(firstScale, 0.1f));
