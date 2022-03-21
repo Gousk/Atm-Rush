@@ -41,19 +41,20 @@ public class Collection : MonoBehaviour
         {
             if (!Foods.Contains(other.gameObject.transform))
             {
+                other.enabled = false;
                 other.transform.parent = null;
                 other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
                 other.gameObject.AddComponent<Collect>();
                 other.tag = "Collected";
                 Foods.Add(other.transform); 
-                StartCoroutine(MakeObjectsBigger());
+                StartCoroutine(MakeObjectsBigger(other));
             }
                           
         }   
     }
 
-    public IEnumerator MakeObjectsBigger()
+    public IEnumerator MakeObjectsBigger(Collider other)
     {
         for (int i = Foods.Count-1; i > 0; i--)
         {
@@ -62,6 +63,7 @@ public class Collection : MonoBehaviour
 
             Foods[i].transform.DOScale(Scale, 0.1f).OnComplete(() => 
             Foods[i].transform.DOScale(firstScale, 0.1f));
+            other.enabled = true;
             yield return new WaitForSeconds(0.1f);
         }
     }

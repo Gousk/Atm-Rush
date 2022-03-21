@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Collect
   - Collected
+  - Upgrade1
+  - Upgrade2
+  - Upgrade3
+  - Converter
   layers:
   - Default
   - TransparentFX
