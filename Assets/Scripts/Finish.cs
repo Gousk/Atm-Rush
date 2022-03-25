@@ -10,6 +10,7 @@ public class Finish : MonoBehaviour
     [SerializeField] GameObject transporter;
     Collection list;
     List<Transform> Mover = new List<Transform>();
+    bool happened = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +51,9 @@ public class Finish : MonoBehaviour
             other.transform.parent = transporter.transform;       
         } 
 
-        if (list.score == 700) 
+        if (list.score == 700 && happened == false) 
         {
+            happened = true;
             gameObject.transform.GetChild(2).GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             gameObject.transform.GetChild(2).GetChild(1).GetComponent<MeshRenderer>().enabled = true;
             gameObject.transform.GetChild(2).GetChild(2).GetComponent<MeshRenderer>().enabled = true;
