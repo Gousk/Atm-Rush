@@ -1985,6 +1985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 0
   Foods: []
+  score: 0
 --- !u!1 &8215634318594570609
 GameObject:
   m_ObjectHideFlags: 0

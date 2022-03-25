@@ -9,6 +9,10 @@ public class Converter : MonoBehaviour
     Transform apple;
     Transform pizza;
     Transform lollypop;
+    public string prevTag;
+    ParticleSystem appleP;
+    ParticleSystem pizzaP;
+    ParticleSystem lollypopP;
 
     int currentState;
     // Start is called before the first frame update
@@ -18,26 +22,29 @@ public class Converter : MonoBehaviour
         apple = self.transform.GetChild(0);
         pizza = self.transform.GetChild(1);
         lollypop = self.transform.GetChild(2);
+
+        appleP = self.transform.GetChild(3).GetComponent<ParticleSystem>();
+        pizzaP = self.transform.GetChild(4).GetComponent<ParticleSystem>();
+        lollypopP = self.transform.GetChild(5).GetComponent<ParticleSystem>();
     }
 
     void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Converter"))
         {
-            if (self.tag == "Collected")
+            if (apple.GetComponent<Renderer>().enabled == true)
             {
-                self.tag = "Upgrade1";
                 apple.GetComponent<Renderer>().enabled = false;
                 pizza.GetComponent<Renderer>().enabled = true; 
                 MakeObjectsBigger();
-            }    
-            else if (self.tag == "Upgrade1")
+            }
+            else if (pizza.GetComponent<Renderer>().enabled == true)
             {
                 pizza.GetComponent<Renderer>().enabled = false;
                 lollypop.GetComponent<Renderer>().enabled = true; 
-                MakeObjectsBigger();
-            }                 
-        }   
+                MakeObjectsBigger();          
+            }
+        } 
     }
 
     void MakeObjectsBigger()
@@ -45,7 +52,8 @@ public class Converter : MonoBehaviour
             Vector3 firstScale = transform.localScale;
             Vector3 Scale = firstScale * 1.5f;
 
+            transform.DOScale(0.9f, 0f).OnComplete(() =>
             transform.DOScale(Scale, 0.1f).OnComplete(() => 
-             transform.DOScale(firstScale, 0.1f));
+             transform.DOScale(0.9f, 0.1f)));
     }
 }

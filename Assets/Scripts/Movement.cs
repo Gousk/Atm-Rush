@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {     
+    {
         if (Input.GetMouseButtonDown(0))
         {
             StartTheGame = MoveByTouch = true;
@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
                 Vector3 desirePso = mousePos - mouseStartPos;
                 Vector3 move = PlayerStartPos + desirePso;
 
-                move.x = Mathf.Clamp(move.x, -5f, 5f);
+                move.x = Mathf.Clamp(move.x, -6f, 6f);
                 move.z = -7f;
 
                 var player = transform.position;
@@ -60,7 +60,8 @@ public class Movement : MonoBehaviour
 
         if (StartTheGame)
         {
-            Road.transform.Translate(Vector3.forward * (RoadSpeed * -1 * Time.deltaTime));
+            //Road.transform.Translate(Vector3.forward * (RoadSpeed * -1 * Time.deltaTime));
+            transform.Translate(Vector3.forward * (RoadSpeed * 1 * Time.deltaTime));
         }          
     }
 

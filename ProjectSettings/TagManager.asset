@@ -11,6 +11,9 @@ TagManager:
   - Upgrade3
   - Converter
   - Fridge
+  - Fridges
+  - Knife
+  - saat
   layers:
   - Default
   - TransparentFX

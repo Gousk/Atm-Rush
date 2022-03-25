@@ -9,6 +9,7 @@ public class Collect : MonoBehaviour
     GameObject playerObject;
     Collection collectionScript;
     Vector3 firstScale;
+    public string prevTag = "none";
     void Start() 
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -18,7 +19,7 @@ public class Collect : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Collect"))
+        if (other.tag == "Collect")
         {
             if (!playerObject.GetComponent<Collection>().Foods.Contains(other.gameObject.transform))
             {
@@ -40,8 +41,9 @@ public class Collect : MonoBehaviour
             Vector3 firstScale = collectionScript.Foods[i].transform.localScale;
             Vector3 Scale = firstScale * 1.5f;
 
-            collectionScript.Foods[i].transform.DOScale(Scale, 0.1f).OnComplete(() => 
-             collectionScript.Foods[i].transform.DOScale(firstScale, 0.1f));
+            collectionScript.Foods[i].transform.DOScale(0.9f, 0f).OnComplete(() =>
+            collectionScript.Foods[i].transform.DOScale(Scale, 0.06f).OnComplete(() => 
+             collectionScript.Foods[i].transform.DOScale(0.9f, 0.06f)));
             yield return new WaitForSeconds(0.1f);
         }
     }

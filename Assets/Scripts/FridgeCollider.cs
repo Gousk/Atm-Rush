@@ -17,10 +17,9 @@ public class FridgeCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == "Collected" || other.tag == "Upgrade1" || other.tag == "Upgrade2")
         {
             leftDoor.GetComponent<Collider>().enabled = false;
-            Debug.Log("triggerIn");
             Vector3 goalRotation = new Vector3(0, 55.16f, 0);
             leftDoor.transform.DORotate(goalRotation, 0.5f).OnComplete(() =>
             leftDoor.GetComponent<Collider>().enabled = true);   
@@ -31,7 +30,6 @@ public class FridgeCollider : MonoBehaviour
         if (other.tag == "Player")
         {
             leftDoor.GetComponent<Collider>().enabled = false;
-            Debug.Log("triggerOut");
             Vector3 firstRotation = new Vector3(0, 0, 0);
             leftDoor.transform.DORotate(firstRotation, 0.5f).OnComplete(() =>
             leftDoor.GetComponent<Collider>().enabled = true); 

@@ -9,6 +9,7 @@ public class Collection : MonoBehaviour
     Movement movementScript;
     [SerializeField] float Distance;
     public List<Transform> Foods = new List<Transform>();
+    public int score = 0;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class Collection : MonoBehaviour
 
                 if (DesireDistance <= Distance)
                 {
-                    SecFood.position = new Vector3(Mathf.Lerp(SecFood.position.x, FirstFood.position.x, movementScript.leftRightSpeed * Time.deltaTime), SecFood.position.y, Mathf.Lerp(SecFood.position.z, FirstFood.position.z + 2f, movementScript.leftRightSpeed * Time.deltaTime));
+                    SecFood.position = new Vector3(Mathf.Lerp(SecFood.position.x, FirstFood.position.x, movementScript.leftRightSpeed * Time.deltaTime), SecFood.position.y, Mathf.Lerp(SecFood.position.z, FirstFood.position.z + 3f, movementScript.leftRightSpeed * Time.deltaTime));
                 }    
             }
         }
@@ -37,7 +38,7 @@ public class Collection : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Collect"))
+        if (other.tag == "Collect")
         {
             if (!Foods.Contains(other.gameObject.transform))
             {
@@ -51,6 +52,12 @@ public class Collection : MonoBehaviour
                 StartCoroutine(MakeObjectsBigger(other));
             }
                           
+        }
+
+        if (other.name == "SAAT")
+        {
+            Destroy(other.gameObject, 0f);
+            score+= 100;
         }   
     }
 
@@ -61,8 +68,9 @@ public class Collection : MonoBehaviour
             Vector3 firstScale = Foods[i].transform.localScale;
             Vector3 Scale = firstScale * 1.5f;
 
-            Foods[i].transform.DOScale(Scale, 0.1f).OnComplete(() => 
-            Foods[i].transform.DOScale(firstScale, 0.1f));
+            Foods[i].transform.DOScale(0.9f, 0f).OnComplete(() =>
+            Foods[i].transform.DOScale(Scale, 0.06f).OnComplete(() => 
+            Foods[i].transform.DOScale(0.9f, 0.06f)));
             other.enabled = true;
             yield return new WaitForSeconds(0.1f);
         }
