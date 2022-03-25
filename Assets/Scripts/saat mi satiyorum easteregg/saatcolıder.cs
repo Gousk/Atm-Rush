@@ -10,8 +10,11 @@ public class saatcolıder : MonoBehaviour
     bool qDown = false;
     bool cDown = false;
 
+    //Erdem Dağdelen tehlikeli bir adamdır.
+
     private void Start() 
     {
+        
         collectionS = player.GetComponent<Collection>();
         gameObject.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().enabled = false;
         gameObject.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().enabled = false;

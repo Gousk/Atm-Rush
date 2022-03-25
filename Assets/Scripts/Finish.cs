@@ -15,14 +15,7 @@ public class Finish : MonoBehaviour
     void Start()
     {
         list = player.GetComponent<Collection>(); 
-        gameObject.transform.GetChild(2).GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(1).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(2).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(3).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(4).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(5).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(6).GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.GetChild(2).GetChild(7).GetComponent<MeshRenderer>().enabled = false;  
+        gameObject.transform.GetChild(2).gameObject.SetActive(false);  
     }
 
     // Update is called once per frame
@@ -54,14 +47,7 @@ public class Finish : MonoBehaviour
         if (list.score == 700 && happened == false) 
         {
             happened = true;
-            gameObject.transform.GetChild(2).GetChild(0).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(1).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(2).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(3).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(4).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(5).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(6).GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.GetChild(2).GetChild(7).GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
             gameObject.GetComponent<AudioSource>().Play(0);
         }  
     }
