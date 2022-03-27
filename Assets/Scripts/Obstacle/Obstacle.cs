@@ -12,6 +12,7 @@ public class Obstacle : MonoBehaviour
     bool isTriggered = false;
     Transform playerLocation;
     [SerializeField] float forceScale = 1f;
+    [SerializeField] GameObject objectRef;
 
     
     // Start is called before the first frame update
@@ -95,13 +96,13 @@ public class Obstacle : MonoBehaviour
         for(int i = 0; i < DroppedItems.Count; i++)
         {
 
-            Vector3 randomPosition = new Vector3(Random.Range(7f, 20f), GameObject.Find("objectTransform").transform.localPosition.y + 0f, Random.Range(transform.localPosition.z + 10, transform.localPosition.z + 25));
+            Vector3 randomPosition = new Vector3(Random.Range(7f, 20f), objectRef.transform.localPosition.y + 0f, Random.Range(transform.localPosition.z + 10, transform.localPosition.z + 25));
 
             DroppedItems[i].GetComponent<Collider>().isTrigger = true;
             DroppedItems[i].transform.gameObject.SetActive(true);
             DroppedItems[i].transform.localPosition = randomPosition;
 
-            Vector3 firstScale = GameObject.Find("objectTransform").transform.localScale;
+            Vector3 firstScale = objectRef.transform.localScale;
             Vector3 Scale = firstScale * 1.5f;
         }
     } 

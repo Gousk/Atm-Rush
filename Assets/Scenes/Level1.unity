@@ -2230,6 +2230,7 @@ MonoBehaviour:
   player: {fileID: 1655929531}
   road: {fileID: 2088320656}
   forceScale: 1
+  objectRef: {fileID: 0}
 --- !u!1001 &416699330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4065,6 +4066,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1655929531}
+    - target: {fileID: 7046290825732052284, guid: e704466865bd835489314b3cb0da9d74, type: 3}
+      propertyPath: objectRef
+      value: 
+      objectReference: {fileID: 1086988211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e704466865bd835489314b3cb0da9d74, type: 3}
 --- !u!4 &853640625 stripped
@@ -7423,6 +7428,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1655929531}
+    - target: {fileID: 7046290825732052284, guid: e704466865bd835489314b3cb0da9d74, type: 3}
+      propertyPath: objectRef
+      value: 
+      objectReference: {fileID: 1086988211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e704466865bd835489314b3cb0da9d74, type: 3}
 --- !u!1 &1655929531 stripped
@@ -8670,6 +8679,7 @@ MonoBehaviour:
   player: {fileID: 1655929531}
   road: {fileID: 2088320656}
   forceScale: 1
+  objectRef: {fileID: 0}
 --- !u!4 &1921606487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 337127420001741426, guid: 43fe7f7f18804d2489725f2cf71ab2fd, type: 3}
@@ -10067,6 +10077,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1655929531}
+    - target: {fileID: 7046290825732052284, guid: e704466865bd835489314b3cb0da9d74, type: 3}
+      propertyPath: objectRef
+      value: 
+      objectReference: {fileID: 1086988211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e704466865bd835489314b3cb0da9d74, type: 3}
 --- !u!1001 &7073924049240799646

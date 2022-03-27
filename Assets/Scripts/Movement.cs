@@ -9,12 +9,14 @@ public class Movement : MonoBehaviour
     private Vector3 mouseStartPos, PlayerStartPos;
     [SerializeField] public float leftRightSpeed, RoadSpeed;
     [SerializeField] GameObject Road;
+    Rigidbody rb;
     static Movement MovementInstance;
     Camera mainCam;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         collectionScript = gameObject.GetComponent<Collection>();
         MovementInstance = this;
         mainCam = Camera.main;
@@ -23,6 +25,11 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(new Vector3(0, 0, 0), ForceMode.Impulse);
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             StartTheGame = MoveByTouch = true;
